@@ -1,0 +1,2 @@
+# mooqita
+learning bash
