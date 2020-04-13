@@ -12,6 +12,17 @@ str_count=$(( $str_count+$str_size+1 ))
 cat /dev/urandom | tr -dc [:alnum:] | head -c $str_size >> rndfile
 echo >> rndfile
 done
-ls -lh rndfile
-ls -l rndfile
-wc -c rndfile
+echo "new file with random strings is rndfile"
+#Sorting  file
+cat | rndfile | sort -d -o rndsort
+echo "sorted file with random strings is rndsort"
+#removing "a" from sorted file
+#cat testfile | xargs -I {} bash -c 'if [[ {} =~ [*a*] ]] ; then let counter++ ; else  echo {} >> newfile ; fi'
+#echo $counter
+#by some reason 'let counter++' is not increasing
+grep -v 'a' rndsort > rnd_without_a
+echo -n 'There has been deleted '
+grep 'a' rndsort | wc -l
+echo " lines"
+echo "new sorted file without lines, containing 'a', is rnd_without_a" 
+exit 0
