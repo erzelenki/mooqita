@@ -3,6 +3,7 @@
 
 #Random size from 1 to 15 characters with A..Z - a..z - 0..9 String creation
 
+str_count=0
 while [[ $(( $str_count/1024 )) -lt 1000 ]]
 do
 
@@ -20,16 +21,10 @@ cat rndfile | sort -d -o rndsort
 echo "sorted file with random strings is rndsort"
 
 
-#removing "a" from sorted file
-#cat testfile | xargs -I {} bash -c 'if [[ {} =~ [*a*] ]] ; then let counter++ ; else  echo {} >> newfile ; fi'
-#echo $counter
-#by some reason 'let counter++' is not increasing
-
-
 
 #removing "a" from sorted file more simple solution
 grep -v 'a' rndsort > rnd_without_a
-echo -n 'There has been deleted '
+echo -n 'There have been deleted '
 echo -n `grep 'a' rndsort | wc -l`
 echo " lines"
 echo "new sorted file without lines, containing 'a', is rnd_without_a" 
