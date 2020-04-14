@@ -2,9 +2,11 @@
 #mooqita first challenge
 
 #Random size from 1 to 15 characters with A..Z - a..z - 0..9 String creation
+echo -n '' >  rndfile
 
 str_count=0
 while [[ $(( $str_count/1024 )) -lt 1000 ]]
+#while [[ `ls -la rndfile | awk '{ print $5 }'` -lt 1024000 ]]
 do
 
 	str_size=$(( $RANDOM/2185+1 ))
